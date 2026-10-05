@@ -22,8 +22,8 @@ public abstract class Vehiculo {
     }
 
     public void setMarca(String marca) {
-        if(marca == null) {
-
+        if(marca == null || marca.isEmpty() ) {
+            throw new IllegalArgumentException("La marca no puede ser nula.");
         }
         this.marca = marca;
     }
@@ -34,19 +34,25 @@ public abstract class Vehiculo {
 
     public void setAnioDeFabricacion(int anioDeFabricacion) {
         if(anioDeFabricacion < 1990 || anioDeFabricacion > 2026) {
-            return
+            throw new IllegalArgumentException("El año de fabricación no puede ser menor a 1990 o más a 2026.");
         }
         this.anioDeFabricacion = anioDeFabricacion;
     }
 
     public int getKilometraje() {
-        if (kilometraje <= 0) {
-            return
-        }
+
         return kilometraje;
     }
 
     public void setKilometraje(int kilometraje) {
+        if (kilometraje <= 0) {
+            throw new IllegalArgumentException("El kilometraje debe ser un valor mayor a 0");
+        }
+
         this.kilometraje = kilometraje;
     }
-}
+
+
+
+    }
+
